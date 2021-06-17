@@ -1,0 +1,1 @@
+Note: I run main.py and reply-bot/main.py seprately (as in I run them as seperate scripts)
