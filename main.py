@@ -10,8 +10,6 @@ def send_msg(url, msg):
     urlopen(req)
 
 
-webhook_url = '[CENSORED]'
-
 reddit = praw.Reddit(client_id = client_id,
 client_secret = client_secret,
 username = username,
