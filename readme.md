@@ -1,1 +1,1 @@
-Note: I run main.py and reply-bot/main.py seprately (as in I run them as seperate scripts)
+Note: I run main.py and reply-bot/main.py seperately (as in I run them as seperate scripts)
