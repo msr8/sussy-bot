@@ -1,4 +1,5 @@
 from config import *
+import time as t
 import praw
 
 def process_text(x):
@@ -17,13 +18,18 @@ username = username,
 password = password,
 user_agent = 'Whatever')
 
-print('\nSussy bot reply script is up\n')
-for comment in praw.models.util.stream_generator( reddit.inbox.comment_replies, skip_existing = True ):
+while True:
+    try:
+        print(f'\nSussy bot reply script is up ({t.asctime()})\n')
+        for comment in praw.models.util.stream_generator( reddit.inbox.comment_replies, skip_existing = True ):
 
-    text = process_text(comment.body)
-    print(text)
+            text = process_text(comment.body)
+            print(text)
 
-    if text == 'goodbot':
-        comment.reply(good_reply)
-    elif text == 'badbot':
-        comment.reply(bad_reply)
+            if text == 'goodbot':
+                comment.reply(good_reply)
+            elif text == 'badbot':
+                comment.reply(bad_reply)
+    except:
+        print(f'error at {t.asctime()} Restarting in 5 minutes')
+        t.sleep(300)
