@@ -1,4 +1,5 @@
 from config import *
+import random as r
 import time as t
 import praw
 
@@ -10,7 +11,9 @@ def process_text(x):
         if char in allowed_chars:
             ret += char
     return ret
-    
+
+
+
 
 reddit = praw.Reddit(client_id = client_id,
 client_secret = client_secret,
@@ -29,7 +32,7 @@ while True:
             if text == 'goodbot':
                 comment.reply(good_reply)
             elif text == 'badbot':
-                comment.reply(bad_reply)
+                comment.reply( r.choice(bad_replies) )
     except:
         print(f'error at {t.asctime()} Restarting in 5 minutes')
         t.sleep(300)
