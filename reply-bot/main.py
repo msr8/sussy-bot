@@ -27,10 +27,11 @@ while True:
         for comment in praw.models.util.stream_generator( reddit.inbox.comment_replies, skip_existing = True ):
 
             text = process_text(comment.body)
-            print(text)
-
-            if text == 'goodbot':
-                comment.reply(good_reply)
+            
+            if 'u/sussy-bot-2' in comment.body:
+                comment.reply(default_reply)
+            elif text == 'goodbot':
+                comment.reply( r.choice(good_replies) )
             elif text == 'badbot':
                 comment.reply( r.choice(bad_replies) )
     except:
