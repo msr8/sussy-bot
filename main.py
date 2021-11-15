@@ -25,14 +25,10 @@ while True:
         for comment in praw.models.util.stream_generator(reddit.inbox.mentions, skip_existing=True):
             try:
                 comment.reply(reply)
-                send_msg(webhook_url, f'''**Comment:** {comment.body}
-        **OP:** {comment.author}
-        **Link:** {comment.context}''')
+                send_msg(webhook_url, f'''**Comment:** {comment.body}\n**OP:** {comment.author}\n**Link:** {comment.context}''')
             
-            except:
-                send_msg(webhook_url, f'''ERROR:\n\n**Comment:** {comment.body}
-        **OP:** {comment.author}
-        **Link:** {comment.context}''')
+            except Exception as e:
+                send_msg(webhook_url, f'''__**ERROR:**__\n\n```\n{e}```\n**Comment:** {comment.body}\n**OP:** {comment.author}\n**Link:** {comment.context}''')
     except:
         print(f'error at {t.asctime()} Restarting in 5 minutes')
         t.sleep(300)
