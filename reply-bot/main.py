@@ -28,7 +28,7 @@ while True:
 
             text = process_text(comment.body)
             
-            if 'u/sussy-bot-2' in comment.body:
+            if 'u/sussy-bot-2' in comment.body and not comment.author.name.lower() == 'automoderator':
                 comment.reply(default_reply)
             elif text == 'goodbot':
                 comment.reply( r.choice(good_replies) )
